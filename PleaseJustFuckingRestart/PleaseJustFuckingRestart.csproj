@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<LangVersion>11</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
+		<PackageReference Include="Northwood.LabAPI" Version="1.1.1" />
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(SL_REFERENCES)/Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(SL_REFERENCES)/Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="CommandSystem">
+			<HintPath>$(SL_REFERENCES)/CommandSystem.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(SL_REFERENCES)/UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(SL_REFERENCES)/UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>
