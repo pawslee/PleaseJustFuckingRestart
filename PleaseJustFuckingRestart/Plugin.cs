@@ -1,13 +1,16 @@
-﻿using LabApi.Features.Wrappers;
+﻿using HarmonyLib;
+using LabApi.Features.Wrappers;
 using LabApi.Loader.Features.Plugins;
 
 namespace PleaseJustFuckingRestart;
 
 internal class PleaseJustFuckingRestartPlugin : Plugin
 {
+    private readonly Harmony harmony = new("PleaseJustFuckingRestart");
+
     public override string Name { get; } = "PleaseJustFuckingRestart";
 
-    public override string Description { get; } = "makes soft restart actually fucking restart";
+    public override string Description { get; } = "makes the restart command not take 10 gazillion years to restart";
 
     public override string Author { get; } = "Rue <3";
 
@@ -17,25 +20,11 @@ internal class PleaseJustFuckingRestartPlugin : Plugin
 
     public override void Enable()
     {
-        StaticUnityMethods.OnUpdate += CheckForResponses;
+        harmony.PatchAll();
     }
 
     public override void Disable()
     {
-        StaticUnityMethods.OnUpdate -= CheckForResponses;
-    }
-
-    private static void CheckForResponses()
-    {
-        if (IdleMode.IdleModeActive)
-        {
-            while (ServerConsole.PrompterQueue.TryDequeue(out string text))
-            {
-                if (!string.IsNullOrWhiteSpace(text))
-                {
-                    ServerConsole.EnterCommand(text, ServerConsole.Scs);
-                }
-            }
-        }
+        harmony.UnpatchAll();
     }
 }
